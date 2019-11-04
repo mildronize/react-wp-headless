@@ -1,0 +1,128 @@
+/*!
+* Bootstrap v4.3.1 (https://getbootstrap.com/)
+* Copyright 2011-2019 The Bootstrap Authors
+* Copyright 2011-2019 Twitter, Inc.
+* Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+*/
+
+// Configuration
+
+// Typo
+@import "font-prompt.scss";
+// @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,500,500i,600,600i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bai+Jamjuree:400,500,600&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i&display=swap');
+$body-color:  #363636;
+
+$font-family-thai: "Bai Jamjuree", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+
+// Poppins
+// IBM Plex Sans
+$font-family-sans-serif:      "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+// $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base:           $font-family-thai;
+body{
+  font-family: $font-family-thai;
+}
+body:lang(th){
+    font-family: $font-family-thai;
+    font-size: 120%;
+}
+// Paragraphs
+//
+// Style p element.
+
+$paragraph-margin-bottom:   1.2rem;
+
+$line-height-base:            1.8;
+$line-height-lg:              2;
+$line-height-sm:              1.25;
+
+// Heading
+// Scale => 1.20
+
+$font-size-base:              1.05rem;
+$h1-font-size:                $font-size-base * 2.074;
+$h2-font-size:                $font-size-base * 1.728;
+$h3-font-size:                $font-size-base * 1.44;
+$h4-font-size:                $font-size-base * 1.266;
+$h5-font-size:                $font-size-base * 1.15;
+$h6-font-size:                $font-size-base;
+
+
+
+$headings-margin-top:       2.4rem;     // My styles
+$headings-margin-bottom:     1rem;
+
+$headings-font-family :      $font-family-thai;
+$headings-font-weight:       600;
+// $headings-line-height;
+
+// Container
+$container-max-widths: (
+  sm: 540px,
+  md: 660px,
+  lg: 720px,
+  xl: 960px
+);
+
+
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/utilities";
+
+// Layout & components
+
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/breadcrumb";
+@import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/toasts";
+@import "~bootstrap/scss/modal";
+@import "~bootstrap/scss/tooltip";
+@import "~bootstrap/scss/popover";
+@import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/spinners";
+
+
+// Helpers
+//  @import "~bootstrap/scss/helpers";
+
+
+// Utilities
+//  @import "~bootstrap/scss/utilities/api";
+body{
+  font-size: 1.1rem;
+}
+
+@media (min-width: 576px) {
+  body {
+    font-size: 1rem;    
+  }
+}
+
+@media (min-width: 1200px) {
+  body {
+    font-size: 1.2rem;    
+  }
+}

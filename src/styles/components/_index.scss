@@ -1,0 +1,37 @@
+.page-section-header{
+    margin-top: 3.5rem;
+    margin-bottom: 2.5rem;
+    text-transform: uppercase;
+    color: #666;
+    font-weight: 600;
+    font-family: $headings-font-family;
+}
+
+.hero{
+    &-section{
+        margin: 2rem 0;
+    }
+    &-title{
+      display: inline-block;
+      color: black;
+      font-family: $headings-font-family;
+      font-weight: 500;
+      font-size: 2rem;
+      margin-top: -0.8rem;
+      margin-bottom: 1.7rem;
+      background-image: 
+      linear-gradient( transparent 0%, transparent calc(50% + 20px), 
+      rgba(10, 108, 255, 0.2) calc(50% + 20px), rgba(10, 108, 255, 0.2) 100% );
+
+       @media (max-width: 500px) {
+        font-size: 1.6rem;
+        background-image: 
+        linear-gradient( transparent 0%, transparent calc(50% + 15px), 
+        rgba(10, 108, 255, 0.2) calc(50% + 15px), rgba(10, 108, 255, 0.2) 100% );
+       }
+
+    }
+    &-tagline{
+        color: #666;
+    }
+  }

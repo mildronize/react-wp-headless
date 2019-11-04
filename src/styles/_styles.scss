@@ -1,0 +1,282 @@
+
+// @import "font-prompt.scss";
+
+// $font-color: #363636;
+
+// General
+
+// body {
+//   color: $font-color;
+// }
+
+
+
+h1, h2, h3, h4, h5, h6{
+  margin-top: $headings-margin-top;
+  margin-bottom: $headings-margin-bottom;
+}
+
+li {
+  margin-bottom: 0.35rem;
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+// Code
+
+pre,
+code,
+kbd,
+samp {
+  font-size: 0.9em;
+  line-height: 1.3;
+}
+
+// Resume Page
+
+// .resume{
+//   &-profile{
+//     border-radius: 50%;
+//     width:160px;
+//   }
+  // &-summary{
+  //   padding-top: 1.5rem;
+  // }
+  // &-card {
+  //   padding: 0.25rem;
+  // }
+
+  // &-profile-col{
+  //   flex: 0 0 200px;
+  // }
+  // &-title {
+  //   font-weight: 600;
+  //   text-transform: uppercase;
+  //   color: #999;
+  //   font-size: 0.7rem;
+  // }
+// }
+
+.about{
+  &-user-link{
+    text-decoration: none;
+    color: grey;
+    padding-right: 1.5rem;
+    font-size: 1.25rem;
+  }
+
+  &-user-link:hover{
+    text-decoration: none;
+  }
+
+  &-user-link a{
+    text-decoration: none;
+  }
+
+  &-user-link-title{
+    padding: 0.5rem;
+  }
+
+  &-contact {
+    padding: 0;
+  }
+
+  &-contact li{
+    list-style-type: none;
+    display: inline-block;
+  }
+}
+
+@keyframes blink{
+  0%{opacity: 0;}
+  10%{opacity: 1;}
+  90%{opacity: 1;}
+  100%{opacity: 0;}
+  }
+
+.tag-alpha{
+  background-color: #ffdd57;
+  color: rgba(0,0,0,0.7);
+  align-items: center;
+  border-radius: 4px;
+  display: inline-flex;
+  font-size: .75rem;
+  height: 2em;
+  justify-content: center;
+  line-height: 1.5;
+  padding-left: .75em;
+  padding-right: .75em;
+  white-space: nowrap;
+  // margin-left: 0.7rem;
+  margin-top: 0.1rem;
+  animation: blink 4s linear infinite;
+}
+
+.tag-alpha:hover {
+  text-decoration: none;
+  background-color: #e7c84c;
+  color: rgba(0,0,0,0.7);
+}
+
+
+blockquote p{
+  background-color: #f5eac4;
+  padding: 1rem 1.2rem;
+  margin: 0.5rem 0;
+  border-radius: .3em;
+}
+
+// Code block from `prism-dracula.css`
+
+code,
+pre{
+    color: #f8f8f2;
+    background: none;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none; }
+
+/* Code blocks */
+pre {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+    border-radius: 0.3em; }
+
+:not(pre) > code,
+pre{
+    background: #282a36; }
+
+/* Inline code */
+:not(pre) > code{
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal; 
+    color: #282a36;
+    background: #eee;
+  }
+
+
+// Post Layout
+.post{
+  &-title{
+    margin-bottom: 0rem; 
+  }
+  &-date{
+    margin-bottom: 2.5rem; 
+  }
+  &-container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 740px;
+  }
+}
+
+.page{
+  &-title{
+    margin-bottom: 2.5rem; 
+  }
+  &-container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 740px;
+  }
+}
+
+// container with Bootstrap navbar
+.navbar>.page-container{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-light .navbar-toggler{
+  border-color: rgba(0, 0, 0, 0);
+}
+
+// `...` horizental line
+
+hr{
+  display: block;
+  text-align: center;
+  border-width: 0px;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  
+}
+hr::before {
+  content: "...";
+  display: inline-block;
+  letter-spacing: 1em;
+  line-height: 1;
+}
+
+// Required bootstrap >= 4.0
+.two-columns{
+  // margin-left: 0; margin-right: 0;
+  list-style-type: none;
+  padding-left: 0;
+  margin: 2rem 0;
+  @media (min-width: 980px) {
+    margin-left: -12rem; margin-right: -12rem;
+  }
+  
+}
+
+// Placeholder like medium
+
+.placeholder {
+  background-color: #f6f6f6;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+
+  &-image {
+    margin: 2rem 0;
+  }
+
+  &-img-small {
+    filter: blur(20px);
+    /* this is needed so Safari keeps sharp edges */
+    transform: scale(1);
+  }
+
+  img {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: opacity 1s linear;
+    &.loaded {
+      opacity: 1;
+    }
+  }
+}
+
+.page-title{
+  margin-bottom: 3.5rem;
+}
