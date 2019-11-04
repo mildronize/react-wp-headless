@@ -68,7 +68,7 @@ class Header extends Component {
                     </li>
                 )} */}
                 <li className="nav-item d-flex justify-content-center">
-                    <Link className="nav-link" to="/page/about">about</Link>
+                    <Link className="nav-link" to="/page?s=about">about</Link>
                 </li>
                 <li className="nav-item d-flex justify-content-center">
                     <Link className="nav-link" to="/search">search</Link>

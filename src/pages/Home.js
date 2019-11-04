@@ -97,14 +97,14 @@ class Home extends Component {
     });
     let posts = result.data.posts.edges;
     posts = posts.map(post => {
-      const finalLink = `/post/${post.node.slug}`;
+      const finalLink = `/post?s=${post.node.slug}`;
       const modifiedPost = { ...post };
       modifiedPost.node.link = finalLink;
       return modifiedPost;
     });
     let pages = result.data.pages.edges;
     pages = pages.map(page => {
-      const finalLink = `/page/${page.node.slug}`;
+      const finalLink = `/page?s=${page.node.slug}`;
       const modifiedPage = { ...page };
       modifiedPage.node.link = finalLink;
       return modifiedPage;

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
 import { PageLoader } from '../components/Loaders';
+import QueryString from 'query-string';
+import { Redirect } from 'react-router-dom';
 
 /**
  * GraphQL page query that takes a page slug as a uri
@@ -25,19 +27,23 @@ class Page extends Component {
       title: '',
       content: '',
     },
-    isLoading: true
+    isLoading: true,
+    isError: false,
   };
 
   componentDidMount() {
     this.executePageQuery();
+    // console.log(this.props.location.search);
   }
 
   /**
    * Execute page query, process the response and set the state
    */
   executePageQuery = async () => {
-    const { match, client } = this.props;
-    let uri = match.params.slug;
+    try{
+    const parsed = QueryString.parse(this.props.location.search);
+    const { client } = this.props;
+    let uri = parsed.s;
     if (!uri) {
       uri = 'welcome';
     }
@@ -48,10 +54,14 @@ class Page extends Component {
     const page = result.data.pageBy;
     this.setState({ page });
     this.setState({ isLoading: false });
+    }catch(error){
+      this.setState({ isError: true });
+      console.log(error);
+    }
   };
 
   render() {
-    const { page, isLoading } = this.state;
+    const { page, isLoading, isError } = this.state;
     return (
       <div>
         {/* <div className="pa2">
@@ -66,6 +76,10 @@ class Page extends Component {
               }}
             />
         }
+
+        {isError?<Redirect to="/404" />:<div/>}
+      
+      
       </div>
     );
   }
