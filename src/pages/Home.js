@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 // import { InMemoryCache } from 'apollo-cache-inmemory';
 // import { ApolloClient } from 'apollo-boost';
 import PostList from '../components/PostList';
+import QueryString from 'query-string';
 
 const headerImageStyle = {
   marginTop: 50,
@@ -68,6 +69,8 @@ class Home extends Component {
   componentDidMount() {
     this.executePageQuery();
     this.executePagesAndCategoriesQuery();
+    const parsed = QueryString.parse(this.props.location.search);
+    console.log(parsed);
   }
 
   /**
@@ -77,7 +80,8 @@ class Home extends Component {
     const { match, client } = this.props;
     let uri = match.params.slug;
     if (!uri) {
-      uri = 'welcome';
+      // default page;
+      uri = 'about';
     }
     const result = await client.query({
       query: PAGE_QUERY,
@@ -97,14 +101,14 @@ class Home extends Component {
     });
     let posts = result.data.posts.edges;
     posts = posts.map(post => {
-      const finalLink = `/post?s=${post.node.slug}`;
+      const finalLink = `/post/${post.node.slug}`;
       const modifiedPost = { ...post };
       modifiedPost.node.link = finalLink;
       return modifiedPost;
     });
     let pages = result.data.pages.edges;
     pages = pages.map(page => {
-      const finalLink = `/page?s=${page.node.slug}`;
+      const finalLink = `/page/${page.node.slug}`;
       const modifiedPage = { ...page };
       modifiedPage.node.link = finalLink;
       return modifiedPage;

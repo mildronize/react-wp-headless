@@ -51,9 +51,8 @@ class Post extends Component {
    */
   executePostQuery = async () => {
     try{
-      const parsed = QueryString.parse(this.props.location.search);
       const { match, client } = this.props;
-      const filter = parsed.s;
+      const filter = match.params.slug;
       const result = await client.query({
         query: POST_QUERY,
         variables: { filter },

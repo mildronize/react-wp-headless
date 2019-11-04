@@ -41,9 +41,8 @@ class Page extends Component {
    */
   executePageQuery = async () => {
     try{
-    const parsed = QueryString.parse(this.props.location.search);
-    const { client } = this.props;
-    let uri = parsed.s;
+    const { match, client } = this.props;
+    let uri = match.params.slug;
     if (!uri) {
       uri = 'welcome';
     }
