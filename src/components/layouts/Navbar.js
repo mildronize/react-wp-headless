@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { withApollo } from 'react-apollo';
 import { compose } from 'recompose';
@@ -24,22 +24,22 @@ const Header = () => {
       <div>
         <Navbar color="light" light expand="sm" className="bg-white ">
           <div className="page-container">
-            <NavbarBrand href="/"><div className="logo">mildronize </div></NavbarBrand>
+            <NavbarBrand><Link to="/"><div className="logo">mildronize </div></Link></NavbarBrand>
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 <NavItem>
-                  <NavLink href="/">home</NavLink>
+                  <NavLink><Link className="nav-link" to="/">home</Link></NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="/page/about">about</NavLink>
+                  <NavLink><Link className="nav-link" to="/page/about">about</Link></NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="/blog">blog</NavLink>
+                  <NavLink><Link className="nav-link" to="/blog">blog</Link></NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="/search">
-                    <i class="fas fa-search"></i>
+                  <NavLink >
+                    <Link className="nav-link" to="/search"><i class="fas fa-search"></i></Link>
                   </NavLink>
                 </NavItem>
               </Nav>

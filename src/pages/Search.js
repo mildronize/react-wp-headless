@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
 import { Link } from 'react-router-dom';
+
 /**
  * GraphQL post search query that takes a filter
  * Returns the titles, slugs and authors of posts found

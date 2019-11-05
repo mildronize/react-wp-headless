@@ -33,6 +33,14 @@ const PAGES_AND_CATEGORIES_QUERY = gql`
         }
       }
     }
+    pages {
+      edges {
+        node {
+          title
+          slug
+        }
+      }
+    }
   }
 `;
 
@@ -51,10 +59,10 @@ class Home extends Component {
   // used as a authenticated GraphQL client
   authClient = null;
 
-  componentDidMount() {
-    this.executePageQuery();
-    this.executePagesAndCategoriesQuery();
-    console.log(this.state.isLoading);
+  async componentDidMount() {
+    await this.executePageQuery();
+    await this.executePagesAndCategoriesQuery();
+    console.log(this.state.posts);
   }
 
   /**
@@ -91,12 +99,20 @@ class Home extends Component {
       modifiedPost.node.link = finalLink;
       return modifiedPost;
     });
-    this.setState({ posts });
+    let pages = result.data.pages.edges;
+    pages = pages.map(page => {
+      const finalLink = `/page/${page.node.slug}`;
+      const modifiedPage = { ...page };
+      modifiedPage.node.link = finalLink;
+      return modifiedPage;
+    });
+
+    this.setState({ posts, pages });
     this.setState({ isLoading: false });
   };
 
   render() {
-    const { firstPage, posts, isLoading, isLoadingWelcome } = this.state;
+    const { firstPage, pages, posts, isLoading, isLoadingWelcome } = this.state;
     return (
       <div>
          {isLoadingWelcome?<WelcomeLoader/>:

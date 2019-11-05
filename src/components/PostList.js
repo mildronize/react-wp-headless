@@ -4,6 +4,7 @@ import { DateTime } from 'luxon';
 import Config from '../config';
 
 const PostList = ({ posts, children }) => {
+
   return (
     <div className="postlist">
 

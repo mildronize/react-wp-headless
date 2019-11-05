@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Header';
-import Navbar from './Navbar';
 import Footer from './Footer';
+import Navbar from './Navbar';
 
 class PageLayout extends Component {
     render(){
@@ -9,7 +9,7 @@ class PageLayout extends Component {
         return (
             <div>
                 <Header/>
-                <Navbar/>
+                <Navbar />
                 <div className="page-container">{children}</div>
                 <Footer/>
             </div>

@@ -42,7 +42,20 @@ class Post extends Component {
 
   async componentDidMount() {
     await this.executePostQuery();
+    // try{
+    //   const { post } = this.props.location.state;
+    //   this.setState({ post });
+    //   this.setState({ isLoading: false });
+    //   console.log("Loaded from location");
+      
+    // }catch(error){
+    //   // console.log(error);
+    //   console.log("Fetching from server");
+    //   await this.executePostQuery();
+    // }
+    
     Prism.highlightAll();
+    // console.log(this.state.post);
   }
 
   /**

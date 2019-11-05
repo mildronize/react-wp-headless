@@ -25,11 +25,16 @@
   // -moz-box-shadow: 0 2px 4px 2px hsla(0, 0, 0, 0.04);
   // box-shadow: 0 2px 4px 2px hsla(0, 0, 0, 0.04);
   // padding: .2rem 1rem !important;
+  padding: .4rem 0;
+  margin-left:-0.8rem;
+  margin-right:-0.8rem;
 }
+// .navbar-brand{
+//   margin-left:-0.8rem;
+// }
 
 .nav-item {
     margin-bottom: 0;
-    margin-right: 0.5rem;
 }
 
 .nav-link{
