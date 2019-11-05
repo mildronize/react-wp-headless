@@ -5,7 +5,7 @@ function random(a, b){
     return Math.floor((Math.random() * b) + a);
 }
 
-function getParagraph(numLines, numParagraphs){
+function getParagraph(y_cursor, numLines, numParagraphs){
     const height = 10;
     const lineSpacing = 7;
     const paragraphSpacing = 15;
@@ -13,7 +13,6 @@ function getParagraph(numLines, numParagraphs){
     const widths = ["25%","50%","75%"];
   
     let listRect = [];
-    let y_cursor = 70;
     let lastLineWidth;
     for(let para = 0; para < numParagraphs; para ++){
         for (let i = 0; i < numLinesPerParagraph + 1; i++) {
@@ -32,7 +31,7 @@ function getParagraph(numLines, numParagraphs){
 }
 
 export function PageLoader(){
-    const paragraph = getParagraph(8, 3);
+    const paragraph = getParagraph(70, 8, 3);
     return (
       <ContentLoader height={300}>
       {/* Only SVG shapes */}    
@@ -41,6 +40,15 @@ export function PageLoader(){
     </ContentLoader>
     )
   };
+
+export function PostListLoader(){
+  return (
+    <ContentLoader height={300}>
+    {/* Only SVG shapes */}    
+    {getParagraph(0, 8, 3)}
+  </ContentLoader>
+  )
+};
 
 export const ArticleLoader = () => (
     // https://github.com/danilowoz/create-content-loader/blob/master/src/Gallery/insertYourLoaderHere/Article.js
@@ -56,5 +64,17 @@ export const ArticleLoader = () => (
       <rect x="0" y="129" rx="5" ry="5" width="400" height="150" />
       <rect x="0" y="289" rx="4" ry="4" width="400" height="10" />
       <rect x="0" y="305" rx="4" ry="4" width="100" height="10" />
+    </ContentLoader>
+  )
+
+  export const WelcomeLoader = () => (
+   <ContentLoader
+      height={400}
+      width={400}
+    >
+      <rect x="0" y="13" rx="4" ry="4" width="400" height="30" />
+      <rect x="0" y="80" rx="4" ry="4" width="400" height="10" />
+      <rect x="0" y="100" rx="4" ry="4" width="400" height="10" />
+      <rect x="0" y="120" rx="4" ry="4" width="400" height="10" />
     </ContentLoader>
   )

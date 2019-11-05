@@ -3,7 +3,7 @@ import { withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
 // import { Link } from 'react-router-dom';
 import PostList from '../components/PostList';
-import QueryString from 'query-string';
+import { PostListLoader, WelcomeLoader } from '../components/Loaders';
 
 /**
  * GraphQL page query
@@ -38,13 +38,14 @@ const PAGES_AND_CATEGORIES_QUERY = gql`
 
 class Home extends Component {
   state = {
-    userId: null,
-    first_page: {
+    isLoading: true,
+    isLoadingWelcome: true,
+    firstPage: {
       title: '',
       content: '',
     },
     pages: [],
-    posts: [],
+    posts: []
   };
 
   // used as a authenticated GraphQL client
@@ -53,8 +54,7 @@ class Home extends Component {
   componentDidMount() {
     this.executePageQuery();
     this.executePagesAndCategoriesQuery();
-    const parsed = QueryString.parse(this.props.location.search);
-    console.log(parsed);
+    console.log(this.state.isLoading);
   }
 
   /**
@@ -71,8 +71,9 @@ class Home extends Component {
       query: PAGE_QUERY,
       variables: { uri },
     });
-    const first_page = result.data.pageBy;
-    this.setState({ first_page });
+    const firstPage = result.data.pageBy;
+    this.setState({ firstPage });
+    this.setState({ isLoadingWelcome: false });
   };
 
   /**
@@ -90,25 +91,25 @@ class Home extends Component {
       modifiedPost.node.link = finalLink;
       return modifiedPost;
     });
-
     this.setState({ posts });
+    this.setState({ isLoading: false });
   };
 
   render() {
-    const { first_page, posts } = this.state;
+    const { firstPage, posts, isLoading, isLoadingWelcome } = this.state;
     return (
       <div>
+         {isLoadingWelcome?<WelcomeLoader/>:
           <span
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
-              __html: first_page.content,
+              __html: firstPage.content,
             }}
-          />
+          />}
 
         <hr />
-
         <div className="page-section-header">Latest Posts</div>
-        <PostList posts={posts}/>
+        {isLoading?<PostListLoader />:<PostList posts={posts}/>}
         <center><a href="/blog/">All blog posts</a></center>
       </div>
     );
