@@ -18,13 +18,27 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-ReactDOM.render(
-  <BrowserRouter>
+// https://web.dev/prerender-with-react-snap/
+const rootElement = document.getElementById("root");
+if (rootElement.hasChildNodes()) {
+  ReactDOM.hydrate(
+    <BrowserRouter>
     <ScrollToTop>
-    <ApolloProvider client={client}> 
-        <AppRouter />
-    </ApolloProvider>
+      <ApolloProvider client={client}> 
+          <AppRouter />
+      </ApolloProvider>
     </ScrollToTop>
-  </BrowserRouter>,
-  document.getElementById('root'),
-);
+  </BrowserRouter>
+  , rootElement);
+}
+else {
+  ReactDOM.render(
+    <BrowserRouter>
+    <ScrollToTop>
+      <ApolloProvider client={client}> 
+          <AppRouter />
+      </ApolloProvider>
+    </ScrollToTop>
+  </BrowserRouter>
+  , rootElement);
+}
