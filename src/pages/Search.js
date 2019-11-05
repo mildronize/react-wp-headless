@@ -66,33 +66,29 @@ class Search extends Component {
   render() {
     const { posts } = this.state;
     return (
-      <div className="pa2">
-        <div>
-          Search
-          <input
-            className="search"
-            type="text"
-            onChange={e => this.setState({ filter: e.target.value })}
-            onKeyDown={this.handleKeyDown}
-          />
-          <button
-            className="search"
-            type="button"
-            onClick={() => this.executeSearch()}
-          >
-            OK
-          </button>
+      <div >
+        <div className="row  w-100 ">
+            <div className="col-10">
+              <input type="text" className="form-control" placeholder="Search keywords"
+              onChange={e => this.setState({ filter: e.target.value })}
+              onKeyDown={this.handleKeyDown}
+              />
+             </div>
+             <div className="col">
+              <button className="btn btn-outline-secondary" type="button" id="button-addon2" onClick={() => this.executeSearch()}>Search</button>
+            </div>
         </div>
         <div className="flex mt2 items-start">
           <div className="flex items-center" />
           <div className="ml1">
+          <div className="my-3" />
             {posts.map((post, index) => (
               <div key={post.node.slug}>
-                <span className="gray">{index + 1}.</span>
-                <Link to={post.node.link} className="ml1 black">
+                <span className="postlist-link">{index + 1}. </span>
+                <Link to={post.node.link} className="postlist-link">
                   {post.node.title}
                 </Link>
-                <span className="gray"> by {post.node.author.name}</span>
+                <div className="my-3" />
               </div>
             ))}
             <div className="f6 lh-copy gray" />
