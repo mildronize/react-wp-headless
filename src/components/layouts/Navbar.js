@@ -35,7 +35,12 @@ const Header = () => {
                   <NavLink href="/page/about">about</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="/search">search</NavLink>
+                  <NavLink href="/blog">blog</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="/search">
+                    <i class="fas fa-search"></i>
+                  </NavLink>
                 </NavItem>
               </Nav>
             </Collapse>

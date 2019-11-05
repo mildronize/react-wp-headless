@@ -8,6 +8,7 @@ import Category from './Category';
 import PageLayout from '../components/layouts/PageLayout';
 import Debug from './Debug';
 import Page404 from './404';
+import Blog from './Blog';
 
 export default () => (
   <PageLayout>
@@ -15,6 +16,7 @@ export default () => (
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/search" component={Search} />
+        <Route exact path="/blog" component={Blog} />
         <Route exact path="/page/:slug" component={Page} />
         <Route exact path="/post/:slug" component={Post} />
         <Route exact path="/category/:slug" component={Category} />
