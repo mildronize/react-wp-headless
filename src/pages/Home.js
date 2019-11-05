@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
 import { withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
-import { Link } from 'react-router-dom';
-// import { createHttpLink } from 'apollo-link-http';
-// import { InMemoryCache } from 'apollo-cache-inmemory';
-// import { ApolloClient } from 'apollo-boost';
+// import { Link } from 'react-router-dom';
 import PostList from '../components/PostList';
 import QueryString from 'query-string';
-
-const headerImageStyle = {
-  marginTop: 50,
-  marginBottom: 50,
-};
 
 /**
  * GraphQL page query
@@ -41,21 +33,13 @@ const PAGES_AND_CATEGORIES_QUERY = gql`
         }
       }
     }
-    pages {
-      edges {
-        node {
-          title
-          slug
-        }
-      }
-    }
   }
 `;
 
 class Home extends Component {
   state = {
     userId: null,
-    page: {
+    first_page: {
       title: '',
       content: '',
     },
@@ -81,14 +65,14 @@ class Home extends Component {
     let uri = match.params.slug;
     if (!uri) {
       // default page;
-      uri = 'about';
+      uri = 'welcome';
     }
     const result = await client.query({
       query: PAGE_QUERY,
       variables: { uri },
     });
-    const page = result.data.pageBy;
-    this.setState({ page });
+    const first_page = result.data.pageBy;
+    this.setState({ first_page });
   };
 
   /**
@@ -106,45 +90,26 @@ class Home extends Component {
       modifiedPost.node.link = finalLink;
       return modifiedPost;
     });
-    let pages = result.data.pages.edges;
-    pages = pages.map(page => {
-      const finalLink = `/page/${page.node.slug}`;
-      const modifiedPage = { ...page };
-      modifiedPage.node.link = finalLink;
-      return modifiedPage;
-    });
 
-    this.setState({ posts, pages });
+    this.setState({ posts });
   };
 
   render() {
-    const { page, posts, pages } = this.state;
+    const { first_page, posts } = this.state;
     return (
       <div>
-        <div className="pa2">
-          {/* <img src={logo} width="815" style={headerImageStyle} alt="logo" /> */}
-          {/* <h1>{page.title}</h1>
           <span
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
-              __html: page.content,
+              __html: first_page.content,
             }}
-          /> */}
-
-        <center className="hero-section">
-          <div className="hero-tagline">I'm Lecturer</div>
-          <div className="hero-title">Thada Wangthammang</div>
-          <p>Welcome to my personal archive. You can find almost stuff about me - blog posts, resume, projects, contact information, and more.</p>
-        </center>
+          />
 
         <hr />
 
         <div className="page-section-header">Latest Posts</div>
         <PostList posts={posts}/>
         <center><a href="/blog/">All blog posts</a></center>
-
-      
-        </div>
       </div>
     );
   }

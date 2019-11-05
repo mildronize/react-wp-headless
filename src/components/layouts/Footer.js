@@ -15,7 +15,7 @@ const Footer = () => (
     <a class="footer-user-link" href="https://www.linkedin.com/in/thada-wangthammang-281894a6"><i class="fab fa-linkedin"></i></a>
     <a class="footer-user-link" href="mailto:thada.w@psu.ac.th"><i class="fas fa-envelope"></i></a>
     <a class="footer-user-link" href="https://medium.com/@mildronize"><i class="fab fa-medium"></i></a>
-    <a class="footer-user-link" href="#"><i class="fas fa-rss"></i></a>
+    {/* <a class="footer-user-link" href="/rss.xml"><i class="fas fa-rss"></i></a> */}
     </div>
   </center>
 </footer>

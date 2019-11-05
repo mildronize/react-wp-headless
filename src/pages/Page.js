@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
 import { PageLoader } from '../components/Loaders';
-import QueryString from 'query-string';
 import { Redirect } from 'react-router-dom';
 
 /**

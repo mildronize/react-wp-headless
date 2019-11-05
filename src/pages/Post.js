@@ -5,7 +5,6 @@ import Prism from 'prismjs';
 import Config from '../config';
 import { DateTime } from 'luxon';
 import { ArticleLoader } from '../components/Loaders';
-import QueryString from 'query-string';
 import { Redirect } from 'react-router-dom';
 
 /**
