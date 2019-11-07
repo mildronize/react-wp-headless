@@ -84,7 +84,10 @@ class Post extends Component {
       <div>
         {isLoading?<ArticleLoader />:
         <div>
-          <h1 class="post-title">{ post.title }</h1>
+          <h1 class="post-title" dangerouslySetInnerHTML={{
+              __html: post.title,
+            }}/>
+     
             <p class="post-date">
               {
                 DateTime.fromISO(post.date, { zone: Config.timezone }).toFormat('MMMM d, yyyy')

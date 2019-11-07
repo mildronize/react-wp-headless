@@ -16,7 +16,9 @@ const PostList = ({ posts, children }) => {
               }</time>
           </div>
           <div className="col-sm"> 
-            <Link className="postlist-link" to={post.node.link} >{post.node.title}</Link>
+            <Link className="postlist-link" to={post.node.link} dangerouslySetInnerHTML={{
+                __html: post.node.title,
+              }} />
             <div>
             {/* {post.tags.map(tag => (
               <a key={tag.term_id} href="#" className="tag badge badge-light">{tag.name}</a>
