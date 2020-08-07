@@ -39,7 +39,7 @@
     "graphql-tag": "^2.10.1",
     "luxon": "^1.21.1",
     "node-sass": "^4.13.0",
-    "prismjs": "^1.17.1",
+    "prismjs": "^1.21.0",
     "query-string": "^6.8.3",
     "react": "^16.9.0",
     "react-apollo": "^3.1.0",
